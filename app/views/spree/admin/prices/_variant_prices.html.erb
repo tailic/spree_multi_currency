@@ -1,10 +1,11 @@
-<h5><%= variant.sku %> (<%= variant.is_master? ? t(:master) : variant.options_text %>)</h5>
-<ul>
-<% supported_currencies.each do |currency| %>
-  <li>
-    <% price = variant.price_in(currency.iso_code) %>
-    <%= text_field_tag("vp[#{variant.id}][#{currency.iso_code}]", (price ? price.display_amount.money : '')) %>
-    <%= currency.iso_code %>
-  </li>
-<% end %>
-</ul>
+<div class="omega four columns">
+  <h5 class="twelve columns"><%= variant.sku %> (<%= variant.is_master? ? Spree.t(:master) : variant.options_text %>)</h5>
+  <% supported_currencies.each do |currency| %>
+      <% price = variant.price_in(currency.iso_code) %>
+      <div class="field">
+        <%= label_tag "vp[#{variant.id}][#{currency.iso_code}]", currency.iso_code %>
+        <%= text_field_tag("vp[#{variant.id}][#{currency.iso_code}]", (price && price.price ? price.display_amount.money : '')) %>
+      </div>
+  <% end %>
+  <br><br>
+</div>
