@@ -1,5 +1,5 @@
-<h5><%= variant.sku %> (<%= variant.is_master? ? t(:master) : variant.options_text %>)</h5>
-<div class="omega two columns">
+<div class="omega four columns">
+<h5 class="twelve columns"><%= variant.sku %> (<%= variant.is_master? ? t(:master) : variant.options_text %>)</h5>
 <% supported_currencies.each do |currency| %>
   <% price = variant.price_in(currency.iso_code) %>
   <div class="field">
