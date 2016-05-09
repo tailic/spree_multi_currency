@@ -1,4 +1,4 @@
-<div class="omega four columns">
+<div class="omega four columns" data-type="<%= variant.is_sample? ? 'sample' : 'no-sample' %>">
 <h5 class="twelve columns"><%= variant.sku %> (<%= variant.is_master? ? t(:master) : variant.options_text %>)</h5>
 <% supported_currencies.each do |currency| %>
   <% price = variant.price_in(currency.iso_code) %>
